@@ -23,4 +23,10 @@ defmodule CatcastsWeb.Router do
   # scope "/api", CatcastsWeb do
   #   pipe_through :api
   # end
+
+  scope "/auth", CatcastsWeb do
+    pipe_through :browser
+
+    get "/:provider", SessionController, :request
+  end
 end

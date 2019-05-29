@@ -41,8 +41,8 @@ defmodule CatcastsWeb.VideoControllerTest do
         conn
         |> assign(:user, user)
         |> post(Routes.video_path(conn, :create), video: @invalid_attrs)
-      
-      assert html_response(conn, 200) =~ "New Video"
+
+      assert html_response(conn, 200) =~ "type=\"submit\">Add video</button>"
     end
   end
 

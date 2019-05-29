@@ -24,7 +24,7 @@ defmodule CatcastsWeb.VideoController do
         |> render("new.html", changeset: changeset)
 
       url_info ->
-        [video, message] = YoutubeData.insert_or_get_video(url_info, conn.assign.user)
+        [video, message] = YoutubeData.insert_or_get_video(url_info, conn.assigns.user)
 
         conn
         |> put_flash(:info, message)

@@ -28,7 +28,6 @@ defmodule Catcasts.MultimediaTest do
       video_params =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Multimedia.create_video()
 
       {:ok, video} = Multimedia.create_video(user, video_params)
 
@@ -57,7 +56,9 @@ defmodule Catcasts.MultimediaTest do
     end
 
     test "create_video/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Multimedia.create_video(@invalid_attrs)
+      user = user_fixture()
+
+      assert {:error, %Ecto.Changeset{}} = Multimedia.create_video(user, @invalid_attrs)
     end
 
     test "update_video/2 with valid data updates the video" do

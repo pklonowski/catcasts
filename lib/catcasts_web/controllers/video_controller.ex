@@ -15,7 +15,7 @@ defmodule CatcastsWeb.VideoController do
   end
 
   def create(conn, %{"video" => video_params}) do
-    case Multimedia.create_video(video_params) do
+    case Multimedia.create_video(conn.assigns.user, video_params) do
       {:ok, video} ->
         conn
         |> put_flash(:info, "Video created successfully.")
